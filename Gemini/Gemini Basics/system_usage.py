@@ -9,10 +9,8 @@ client = genai.Client(api_key=os.getenv("llm-metal-gemini"))
 response = client.models.generate_content(
     # The model which we are using
     model="gemini-2.5-flash",
-
     # The user query
     contents="Explain what an API does in 2 sentences.",
-
     # Used to define the system prompt
     config=types.GenerateContentConfig(
         system_instruction="You are terse. Never exceed 2 sentences"

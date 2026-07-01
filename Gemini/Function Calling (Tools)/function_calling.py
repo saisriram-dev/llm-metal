@@ -77,7 +77,8 @@ def run_convo(user_prompt):
         # no function call, so gemini just answered directly - print it and stop here
         print("Gemini has responded: ")
         print(response.text)
-    
+        return  # bug fix: without this, the code below crashes since function_call_part is None
+
     # pull out the function name and args gemini decided to use
     fn_name = function_call_part.name
     fn_args = dict(function_call_part.args)

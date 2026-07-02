@@ -15,6 +15,7 @@ logger = logging.getLogger(__name__)
         # - wait_exponential: starts at 2s, doubles each retry (2s, 4s, 8s...), capped at 20s
         # - wait_random(0, 2): adds a random jitter of 0-2s on top, to avoid retry storms
         #   when multiple callers fail at the same time
+        #   multiplier * 2^(attempt_number - 1)
         wait=wait_exponential(multiplier=1, min=2, max=20) + wait_random(0, 2),
 
         # Only retry if the exception raised is a TimeoutError or ConnectionError.
